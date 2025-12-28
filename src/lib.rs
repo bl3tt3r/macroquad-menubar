@@ -7,17 +7,17 @@ pub struct State {
 }
 
 pub struct Settings {
-    font: Font,
-    font_size: u16,
-    height: f32,
-    width: f32,
-    barre_background_color: Color,
-    barre_border_color: Color,
-    item_hover_color: Color,
-    menu_color: Color,
-    text_color: Color,
-    text_hover_color: Color,
-    menu_shadow_color: Color,
+    pub font: Font,
+    pub font_size: u16,
+    pub height: f32,
+    pub width: f32,
+    pub barre_background_color: Color,
+    pub barre_border_color: Color,
+    pub item_hover_color: Color,
+    pub menu_color: Color,
+    pub text_color: Color,
+    pub text_hover_color: Color,
+    pub menu_shadow_color: Color,
 }
 
 impl Default for Settings {
