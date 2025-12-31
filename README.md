@@ -1,7 +1,12 @@
 
 # macroquad_xp_barre_menu
 
-[TODO] screenshot
+
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
+![Rust Edition](https://img.shields.io/badge/edition-2024-orange)
+![Macroquad](https://img.shields.io/badge/macroquad-0.4.14-success)
+![Made with Rust](https://img.shields.io/badge/Made%20with-Rust-000000?logo=rust)
+
 
 Barre de menu **style Windows XP** pour [Macroquad](https://github.com/not-fl3/macroquad), conçue pour les jeux et outils 2D. 
 S'intègre dans la boucle de rendu Macroquad (UI immediate‑mode) et propose un **style par défaut fidèle à Windows XP** (police Tahoma, couleurs XP).
@@ -241,9 +246,9 @@ loop {
 
 ---
 
-## 🖼️ Screenshots (placeholders)
+## 🖼️ Screenshots 
 
-[TODO]
+
 
 ---
 
