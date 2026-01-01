@@ -7,37 +7,52 @@
 ![Macroquad](https://img.shields.io/badge/macroquad-0.4.14-success)
 ![Made with Rust](https://img.shields.io/badge/Made%20with-Rust-000000?logo=rust)
 
+> Barre de menu style Windows XP pour Macroquad — Simple, légère et nostalgique ! 🪟
 
 ![Fenetre avec style windows XP par defaut](docs/default.png)
 
-Barre de menu **style Windows XP** pour [Macroquad](https://github.com/not-fl3/macroquad), conçue pour les jeux et outils 2D. 
-S'intègre dans la boucle de rendu Macroquad (UI immediate‑mode) et propose un **style par défaut fidèle à Windows XP** (police Tahoma, couleurs XP).
+---
+
+##  🎯 À propos
+
+macroquad_xp_barre_menu est une bibliothèque Rust qui fournit une barre de menu style Windows XP pour vos jeux et applications Macroquad. Elle s'intègre parfaitement dans la boucle de rendu immediate-mode de Macroquad et propose un style rétro authentique avec la police Tahoma et les couleurs classiques de Windows XP.
+
+Idéale pour :
+
+- 🎮 Jeux rétro ou nostalgiques
+- 🛠️ Outils de développement 2D
+- 📱 Applications avec interface simple
+- 🎨 Projets nécessitant un style visuel distinctif
 
 ---
 
 ## ✨ Fonctionnalités
 
-- Barre horizontale avec **menus déroulants**.
-- Éléments supportés :
-  - **Button** (action au clic)
-  - **Checkbox** (interrupteur on/off)
-  - **Radio** (sélection exclusive)
-  - **Separator** (séparateur visuel)
-- **Style par défaut Windows XP** via `Settings::default()` (police `assets/tahoma.ttf`, couleurs XP).
-- **Personnalisation complète** via `Settings` (couleurs, tailles, police).
-- **Compatibilité Macroquad ≥ 0.4.14** (testé avec la version déclarée dans `Cargo.toml`).
+- ✅ Barre de menu horizontale avec menus déroulants
+- ✅ 4 types d'items :
+    - Button : action au clic
+    - Checkbox : interrupteur on/off
+    - Radio : sélection exclusive
+    - Separator : séparateur visuel
+- ✅ Style Windows XP authentique par défaut (police Tahoma, couleurs fidèles)
+- ✅ Entièrement personnalisable (couleurs, tailles, polices)
+- ✅ Multiplateforme : Windows, Linux, macOS, WASM, Android, iOS
+- ✅ Zero dependencies en dehors de Macroquad
+- ✅ API simple et intuitive avec pattern builder
 
 ---
 
 ## 📦 Installation
 
-Le projet n'est pas publié sur crates.io, ajoute-le via **Git** :
+Ajoutez cette dépendance à votre `Cargo.toml` :
 
 ```toml
 [dependencies]
 macroquad = "0.4.14"
 macroquad_xp_barre_menu = { git = "https://github.com/bl3tt3r/macroquad-barre-menu" }
 ```
+
+> 💡 Note : Le package n'est pas encore publié sur crates.io. Utilisez la dépendance Git en attendant.
 
 ---
 
@@ -74,11 +89,55 @@ async fn main() {
 
 ![Fenetre avec style windows XP et un contenue minimal](docs/start.png)
 
+
 ---
 
-## 🎨 Personnalisation (Settings)
+## 📂 Exemples
 
-Le style par défaut (XP) utilise Tahoma et des couleurs classiques. Tu peux créer un thème personnalisé :
+Le dépôt contient plusieurs exemples prêts à l'emploi :
+
+### 1. Style par défaut (Windows XP)
+
+`examples/default.rs`
+
+```bash
+cargo run --example default
+```
+
+![Capture de l'exemple 'default'](docs/default.png)
+
+### 2. Démarrage rapide
+
+`examples/start.rs`
+
+```bash
+cargo run --example start
+```
+
+![Capture de l'exemple 'start'](docs/start.png)
+
+###  Thème personnalisé (sombre)
+
+`examples/style.rs`
+
+```bash
+cargo run --example style
+```
+
+![Capture de l'exemple 'style'](docs/style.png)
+
+---
+
+## ✅ Compatibilité
+
+- Macroquad **0.4.14+**
+- Plateformes : **Windows, Linux, macOS, WASM, Android, iOS** (héritées de Macroquad).
+
+---
+
+## 🎨 Personnalisation
+
+Le style par défaut utilise le thème Windows XP, mais vous pouvez créer votre propre apparence :
 
 ```rust
 use macroquad::prelude::*;
@@ -115,35 +174,18 @@ async fn main() {
 }
 ```
 
----
+### Configuration des couleurs
 
-## 📂 Exemples inclus
+| Propriété | Description | Valeur par défaut (XP) |
+|-----------|-------------|------------------------|
+| `barre_background_color` | Couleur de fond de la barre | `#ECE9D8` |
+| `barre_border_color` | Bordure de la barre | `#0054E3` |
+| `item_hover_color` | Surbrillance au survol | `#3399FF` |
+| `menu_color` | Fond des menus déroulants | `#FFFFFF` |
+| `text_color` | Couleur du texte | `#000000` |
+| `text_hover_color` | Texte au survol | `#FFFFFF` |
+| `menu_shadow_color` | Ombre des menus | `#808080` |
 
-- `examples/default.rs` : style XP par défaut.
-```bash
-cargo run --example default
-```
-![Capture de l'exemple 'default'](docs/default.png)
-
-
-- `examples/start.rs` : démarrage rapide.
-```bash
-cargo run --example start
-```
-![Capture de l'exemple 'start'](docs/start.png)
-
-- `examples/style.rs` : personnalisation complète (ex. thème sombre).
-```bash
-cargo run --example style
-```
-![Capture de l'exemple 'style'](docs/style.png)
-
----
-
-## ✅ Compatibilité
-
-- Macroquad **0.4.14+**
-- Plateformes : **Windows, Linux, macOS, WASM, Android, iOS** (héritées de Macroquad).
 
 ---
 
@@ -190,84 +232,15 @@ loop {
 
 ---
 
-## 🔁 Callbacks & signatures (comment Rust réagit)
-
-### 1) `Button`
-- **Constructeur** : `Button::new(label: &str, on_click: impl FnMut() + 'static)`
-- **Closure** : `|| { ... }` → **aucun argument**
-- **Déclenchement** : **clic gauche** sur l’item
-
-```rust
-.with_item(Button::new("Save", || {
-    save_current_game();
-}))
-```
-
-> Stocké en `Box<dyn FnMut()>` — tu peux capturer/modifier de l’état (via `move` + conteneurs mutables si besoin).
-
-### 2) `Checkbox`
-- **Constructeur** : `Checkbox::new(label: &str, actif: bool, on_change: impl Fn(bool) + 'static)`
-- **Closure** : `|enabled: bool| { ... }` → **nouvel état** (`true/false`)
-- **Déclenchement** : à **chaque bascule**
-
-```rust
-.with_item(Checkbox::new("Sound", false, |enabled| {
-    if enabled { enable_sound(); } else { disable_sound(); }
-}))
-```
-
-> Stocké en `Box<dyn Fn(bool)>` — closure non mut. Pour changer un état externe, utilise `Rc<RefCell<_>>` ou applique ta logique ailleurs.
-
-### 3) `Radio`
-- **Constructeur** : `Radio::new(options: Vec<&str>, on_change: impl Fn(&str) + 'static)`
-- **Closure** : `|value: &str| { ... }` → **option choisie** (ex. `"Expert"`)
-- **Déclenchement** : lorsqu’une **option** est sélectionnée
-
-```rust
-.with_item(Radio::new(vec!["Beginner", "Intermediate", "Expert"], |value| {
-    match value {
-        "Beginner" => set_difficulty(Difficulty::Beginner),
-        "Intermediate" => set_difficulty(Difficulty::Intermediate),
-        "Expert" => set_difficulty(Difficulty::Expert),
-        _ => {}
-    }
-}))
-```
-
-> Par défaut, la **première option** du vecteur est active.
-
-### 4) `Separator`
-- **Constructeur** : `Separator`
-- **Rôle** : séparation visuelle, **pas de callback**
-
----
-
-## 🧪 Mini‑recettes
-
-### Sous‑menu "Options" avec `Checkbox` + `Radio`
-```rust
-.with_menu(
-    Menu::new("Options")
-        .with_item(Checkbox::new("Fullscreen", false, |v| apply_fullscreen(v)))
-        .with_item(Separator)
-        .with_item(Radio::new(vec!["Low", "Medium", "High"], |quality| {
-            set_quality(quality);
-        }))
-)
-```
-
-### Bouton qui sauvegarde et ferme le menu
-```rust
-.with_item(Button::new("Save", || {
-    save_current_game();
-    // la fermeture du menu actif est gérée en interne par la lib
-}))
-```
-
----
-
 ## 📜 Licence
 
 Ce projet est distribué sous **Apache License 2.0**. Vous pouvez utiliser, modifier, distribuer et vendre le logiciel, sous réserve d’indiquer les changements, conserver les avis d’attribution et respecter la licence.
 Aucune garantie ni obligation de support n’est fournie.
 Voir le fichier [`LICENSE`](./LICENSE) pour le texte complet.
+
+---
+
+<div align="center">
+Si ce projet vous est utile, n'oubliez pas de lui donner une ⭐ !
+Fait avec ❤️ et 🦀 par la communauté Rust
+</div>
