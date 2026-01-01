@@ -8,6 +8,8 @@
 ![Made with Rust](https://img.shields.io/badge/Made%20with-Rust-000000?logo=rust)
 
 
+![Fenetre avec style windows XP par defaut](docs/default.png)
+
 Barre de menu **style Windows XP** pour [Macroquad](https://github.com/not-fl3/macroquad), conçue pour les jeux et outils 2D. 
 S'intègre dans la boucle de rendu Macroquad (UI immediate‑mode) et propose un **style par défaut fidèle à Windows XP** (police Tahoma, couleurs XP).
 
@@ -70,7 +72,7 @@ async fn main() {
 }
 ```
 
-![Example (placeholder)](docs/images/example-placeholder.png)
+![Fenetre avec style windows XP et un contenue minimal](docs/start.png)
 
 ---
 
@@ -118,13 +120,23 @@ async fn main() {
 ## 📂 Exemples inclus
 
 - `examples/default.rs` : style XP par défaut.
-- `examples/style.rs` : personnalisation complète (ex. thème sombre).
-
-Exécuter un exemple :
-
 ```bash
 cargo run --example default
 ```
+![Capture de l'exemple 'default'](docs/default.png)
+
+
+- `examples/start.rs` : démarrage rapide.
+```bash
+cargo run --example start
+```
+![Capture de l'exemple 'start'](docs/start.png)
+
+- `examples/style.rs` : personnalisation complète (ex. thème sombre).
+```bash
+cargo run --example style
+```
+![Capture de l'exemple 'style'](docs/style.png)
 
 ---
 
@@ -142,8 +154,14 @@ cargo run --example default
 ```rust
 let mut barre = Barre::default()
     .with_menu(Menu::new("Game"))
-    .with_menu(Menu::new("Help"));
+    .with_menu(Menu::new("Menu 1"));
+    .with_menu(Menu::new("Menu 2"));
+    .with_menu(Menu::new("Menu 3"));
+    .with_menu(Menu::new("Menu 4"));
+    .with_menu(Menu::new("Menu 5"));
 ```
+
+![Capture avec plusieurs menus](docs/menus.png)
 
 ### Ajouter des **items** dans un menu
 
@@ -156,6 +174,8 @@ let menu = Menu::new("Game")
     .with_item(Radio::new(vec!["Beginner", "Intermediate", "Expert"], |v| println!("Value: {}", v)))
     .with_item(Checkbox::new("Sound", false, |enabled| println!("Sound: {}", enabled)));
 ```
+
+![Capture d'un menu ouvert avec plusieurs items](docs/items.png)
 
 ### Dessiner la barre (dans la boucle de rendu)
 
@@ -243,12 +263,6 @@ loop {
     // la fermeture du menu actif est gérée en interne par la lib
 }))
 ```
-
----
-
-## 🖼️ Screenshots 
-
-
 
 ---
 
